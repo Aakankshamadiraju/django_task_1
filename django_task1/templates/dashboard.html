@@ -1,0 +1,55 @@
+{% extends "main_template.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="profile col-lg-6 ">
+            <div class="profile-pic">
+                <img src="{% static 'media/'|add:info.0.profile_photo %}" alt="">
+                <div class="about">
+                    <h2>{{user.username}}</h2>
+                    <p>{{info.0.type}}</p>
+                </div>
+            </div>
+            <div class="information">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                          <th scope="row">First Name</th>
+                          <td>{{user.first_name}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Last Name</th>
+                            <td>{{user.last_name}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Email</th>
+                            <td>{{user.email}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Address</th>
+                            <td>{{info.0.address}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">City</th>
+                            <td>{{info.0.city}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">State</th>
+                            <td>{{info.0.state}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Pincode</th>
+                            <td>{{info.0.pincode}}</td>
+                          </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

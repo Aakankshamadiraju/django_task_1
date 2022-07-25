@@ -1,0 +1,37 @@
+{% extends "main_template.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-evenly">
+        <div class="col-lg-5">
+            <form method="post">
+                <h1>Login Form</h1>
+                {% csrf_token %}
+                {% for field in form %}
+                <p>
+                    {{field.label_tag}}<br>
+                    {{field}}
+                    {% if form.errors %}
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </p>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
